@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class MyStepdefs {
 
     private WebDriver driver;
-    private String user = "DonaldDuck53";
+    private String user = "DonaldDuck54";
     private String useduser = "kalle";
 
     @Before
