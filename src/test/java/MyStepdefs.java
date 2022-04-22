@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class MyStepdefs {
 
     private WebDriver driver;
-    private String user = "DonaldDuck56";
+    private String user = "DonaldDuck61";
     private String useduser = "kalle";
     private String usermail = "Kalle@mail.com";
 
@@ -27,6 +27,7 @@ public class MyStepdefs {
     @Given("Open the webpage")
     public void openTheWebpage() {
         driver.get("https://login.mailchimp.com/signup/");
+        driver.manage().window().maximize();
     }
 
     @Given("I have entered a valid email")
