@@ -14,8 +14,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class MyStepdefs {
 
     private WebDriver driver;
-    private String user = "DonaldDuck53";
+    private String user = "DonaldDuck56";
     private String useduser = "kalle";
+    private String usermail = "Kalle@mail.com";
 
     @Before
     public void createBrowser() {
@@ -31,7 +32,7 @@ public class MyStepdefs {
     @Given("I have entered a valid email")
     public void iHaveEnteredAValidEmail() {
         WebElement mail = driver.findElement(By.id("email"));
-        mail.sendKeys("Kalle@mail.com");
+        mail.sendKeys(usermail);
     }
 
     @And("I have entered a valid username")
@@ -79,11 +80,12 @@ public class MyStepdefs {
 
     @Then("I will get too long name error")
     public void iWillGetTooLongNameError() {
-        boolean expected = true;
-        boolean actual = false;
+        String expected = "Enter a value less than 100 characters long";
+        String actual = "";
         Boolean isPresent = driver.findElements(By.cssSelector("#signup-form > fieldset > div:nth-child(2) > div > span")).size() > 0;
         if (isPresent){
-            actual = true;
+            WebElement error = driver.findElement(By.cssSelector("#signup-form > fieldset > div:nth-child(2) > div > span"));
+            actual = error.getText();
         }
         driver.quit();
 
@@ -99,11 +101,12 @@ public class MyStepdefs {
 
     @Then("I will fail and get user name already in use")
     public void iWillFailAndGetUserNameAlreadyInUse() {
-        boolean expected = true;
-        boolean actual = false;
+        String expected = "Another user with this username already exists. Maybe it's your evil twin. Spooky.";
+        String actual = "";
         Boolean isPresent = driver.findElements(By.cssSelector("#signup-form > fieldset > div:nth-child(2) > div > span")).size() > 0;
         if (isPresent){
-            actual = true;
+            WebElement error = driver.findElement(By.cssSelector("#signup-form > fieldset > div:nth-child(2) > div > span"));
+            actual = error.getText();
         }
         driver.quit();
 
@@ -113,11 +116,12 @@ public class MyStepdefs {
 
     @Then("I will fail and get please enter value under email")
     public void iWillFailAndGetPleaseEnterValueUnderEmail() {
-        boolean expected = true;
-        boolean actual = false;
+        String expected = "Please enter a value";
+        String actual = "";
         Boolean isPresent = driver.findElements(By.cssSelector("#signup-form > fieldset > div:nth-child(1) > div > span")).size() > 0;
         if (isPresent){
-            actual = true;
+            WebElement error = driver.findElement(By.cssSelector("#signup-form > fieldset > div:nth-child(1) > div > span"));
+            actual = error.getText();
         }
         driver.quit();
 
